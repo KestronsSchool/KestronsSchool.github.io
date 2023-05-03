@@ -103,3 +103,15 @@ Would be first, and
 console.log("Hi");
 Would be second
 */
+
+/* Problem Solving */
+/*
+Walk through it, thinking through everything you know. Keep in mind what each variable holds. If nothing else works, Google is your friend. If that doesn't work, sometimes you can ask friends - I have a nice group of coding friends I can ask.
+*/
+
+/* Understand Errors */
+/*
+When in doubt, Google (or Kestrogle :P) it. I'm not sure there's any error I see frequent enough to point out directly.
+Python devs see "expected a semicolon" a lot when first learning JS. Honestly most of the errors are very specific and other than that I can't really think of any off the top of my head - each is unique to your code.
+As I said, when in doubt, Google it.
+*/
