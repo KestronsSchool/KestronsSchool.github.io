@@ -104,14 +104,71 @@ console.log("Hi");
 Would be second
 */
 
-/* Problem Solving */
-/*
-Walk through it, thinking through everything you know. Keep in mind what each variable holds. If nothing else works, Google is your friend. If that doesn't work, sometimes you can ask friends - I have a nice group of coding friends I can ask.
+/* 
+Writing Clean Code
+if(this){
+	doThis();
+}
+Always keep it tabbed properly.
 */
+/* Arrays */
+var newArray=[0,1,2,3,4,5];//Start counting at 0 for accessing all values
+console.log(newArray[0]);//First array element
+console.log(newArray[newArray.length-1]);//Last array element
+newArray[1]=1.5;//Changes the second index (index 1) to 1.5
+console.log(newArray.length);//Prints 5, the last element is accessed at 4 because you start counting at 0 when accessing
+for(var i in newArray){
+	console.log(newArray[i]);
+}
+for(var i=0;i<newArray.length;i++){
+	console.log(newArray[i]);//Be careful if splicing in a loop like this, use i--; if you do
+}
+for(var i=newArray.length-1;i>-1;i--){
+	console.log(newArray[i]);//Loops backwards
+}
+var newObject={
+	"key":"value"
+};//newObject.key
+var anotherArray=["value"];//anotherArray[0]
+newArray.push(6);//Adds 6 to the array
+newArray.pop();//Removes the last element from the array
+newArray.shift();//Removes the first element
+newArray.unshift(-1);//Puts a new value (-1) at the front of the array (index 0)
+var concatenatedArray=newArray.concat(anotherArray);
+var testArray=[0,1,[2,3],[[[4,5,6]]]];
+console.log(testArray.flat(2));//0,1,2,3,[4,5,6], brings all elements out of an array state up to a specified depth. I just found out about this method, and can I say it seems pretty useless?
+newArray.splice(0,2);//Removes 2 elements from the array, starting at index 0
+console.log(newArray.slice(0,2));//Returns all elements between indexes 0 and 2
 
-/* Understand Errors */
+/* Loops */
+var anArray=["Bob","John","Smith"];
+var newArray=anArray.map(i=>i.name);//Make an object out of the array, each element becomes a key value pair
+var filtered=anArray.filter(i=>i.includes("o"));//Return a new array only where the condition matches the element (in this case only if the name has an `o`)
+for(var i=0;i<100;i++){//Go through all values up to 99. Call the number i, start at 0, only do it while i is less than 100, increment by 1
+	console.log(i);
+}
+for(i of newArray){
+	console.log(newArray[i]);//Hit every element
+}
+for(var i=0;i<100;i++){
+	if(i===50){
+		break;//End the loop immediately
+	}
+	else{
+		continue;//Don't do anything else this iteration, move on in the loop
+		console.log(i);//This never gets called
+	}
+}
+var i=0;//The variable is an outside condition
+while(i<50){//While this condition is true
+	//Do this. The condition should be hit while in the loop.
+	i++;//BE VERY CAREFUL WITH THESE LOOPS. If you don't meet the exit condition you WILL CRASH YOUR DEVICE.
+}
+var j=0;
+do{
+	console.log(j);
+}
+while(j<50)//Basically just check if it's true after running the code at least once. Very rarely used.
 /*
-When in doubt, Google (or Kestrogle :P) it. I'm not sure there's any error I see frequent enough to point out directly.
-Python devs see "expected a semicolon" a lot when first learning JS. Honestly most of the errors are very specific and other than that I can't really think of any off the top of my head - each is unique to your code.
-As I said, when in doubt, Google it.
+Test Driven Development is where you test everything at every turn, which is just how programming SHOULD be done IMO.
 */
