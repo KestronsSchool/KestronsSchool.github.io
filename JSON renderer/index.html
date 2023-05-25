@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON Renderer</title>
+        <style>
+            table{
+                color:red;
+            }
+            th{
+                color:blue;
+            }
+            td{
+                color:green;
+                padding:5px;
+                outline-width:5px;
+                outline-color:white;
+            }
+            tr{
+                background-color:beige;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="jsonInput" name="jsonInput">
+            <input hidden name="jsonIn" id="jsonIn">
+            <input type="file" accept=".json" id="filePicker"><br>
+            <input type="submit">
+        </form>
+        <div id="json-display" hidden></div>
+        <script>
+            function getHTML(inp){
+                let toRet="";
+                switch(typeof inp){
+                    case 'object':
+                        if(inp===null) return "";
+                        if(Array.isArray(inp)){
+                            for(var i=0;i<inp.length;i++){
+                                toRet+=getHTML(inp[i]);
+                            }
+                            return toRet;
+                        }
+                        else{
+                            toRet+="<table>";
+                            toRet+="<tr><th>"+Object.keys(inp).join("</th><th>")+"</th></tr><tr>";
+                            for(var i=0;i<Object.keys(inp).length;i++){
+                                toRet+="<td>"+getHTML(inp[Object.keys(inp)[i]])+"</td>";
+                            }
+                            return toRet+"</tr></table>";
+                        }
+                    break;
+                    case 'string':
+                        return inp;
+                    break;
+                    case 'number':
+                        return "<b>"+inp+"</b>";
+                    break;
+                    case 'undefined':
+                        return "<em>undefined</em>";
+                    break;
+                    case 'boolean':
+                        return "<b><em>"+inp+"</em></b>";
+                    break;
+                    case 'function':
+                        return "<em>function</em>";
+                    break;
+                }
+                return "Error";
+            }
+            document.getElementById("filePicker").addEventListener("change",()=>{
+                var file=document.getElementById("filePicker").files[0];
+                var reader = new FileReader();
+                reader.readAsText(file, "UTF-8");
+                reader.onload = function (evt) {
+                    document.getElementById("jsonIn").value=JSON.stringify(evt.target.result);
+                }
+            });
+            const urlParams = new URLSearchParams(location.search);
+            let query={};
+            for(const [key,value] of urlParams){
+                query[key]=value;
+            }
+            if(query.jsonIn){
+                var j=JSON.parse(JSON.parse(query.jsonIn));//Because of the way I'm sending the JSON for some reason it requires parsing it twice which is kinda silly but if it works it works.
+                var table=document.getElementById("json-display");
+                document.getElementById("jsonInput").hidden=true;
+                table.hidden=false;
+                table.innerHTML=getHTML(j);
+            }
+        </script>
+    </body>
+</html>
