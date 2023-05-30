@@ -172,3 +172,43 @@ while(j<50)//Basically just check if it's true after running the code at least o
 /*
 Test Driven Development is where you test everything at every turn, which is just how programming SHOULD be done IMO.
 */
+
+/* Document Object Module (DOM) */
+document.querySelector("#id");//Get the first element with the ID #id
+var p=document.createElement("p");//Create a <p> tag
+document.body.appendChild(p);//Add it to the body
+document.body.removeChild(p);//Remove it from the body
+p.innerHTML="New HTML to be between the <p></p> tags";
+p.style.backgroundColor="rgb(255,0,0)";//Changing the style
+p.hidden=true;//Change the attribute to make it hidden
+var arrayOfElementsWithClassNameOfFoo=document.body.getElementsByClassName("foo");
+p.textContent+="Added text content";
+p.innerHTML+="<br>More HTML";
+/*
+This script will not run until the page is fully loaded, because of the defer tag
+<script src="foo.js" defer></script>
+*/
+var arrayOfAllh1Elements=document.body.getElementsByTagName("h1");
+var arrayOfElementsWithClassNameOfFoo=document.body.getElementsByClassName("foo");
+var elementWithFooID=document.getElementById("foo");
+
+/* Events */
+function func(el){
+	//Our example onclick handler
+
+	//In the first example the button element is passed to this function as "el" so we can use it.
+}
+/*
+	<input type='button' onclick=func(this) id="btn">
+*/
+document.getElementById("btn").onclick=func;
+document.getElementById("btn").addEventListener("click",func);
+for(var i=0;i<arrayOfElementsWithClassNameOfFoo.length;i++){
+	arrayOfElementsWithClassNameOfFoo[i].addEventListener("click",func);
+}
+/*
+	<input type="file" id="fileInput">
+*/
+document.getElementById("fileInput").addEventListener("change",()=>{
+	//Do something whenever a file is inputted to the input
+});
