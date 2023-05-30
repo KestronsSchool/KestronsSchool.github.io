@@ -13,7 +13,7 @@ var var5=1*2;//Multiplication
 var var5=1/2;//Devision
 var var5=1%2;//Modulus, gets the remainder
 
-var "A string with the number "+ 2;//"A string with the number 2" - a string plus a number equals a string
+var t="A string with the number "+ 2;//"A string with the number 2" - a string plus a number equals a string
 
 /* Working with Numbers */
 var nanExample="9"/3;//NaN - Not a Number
@@ -212,3 +212,74 @@ for(var i=0;i<arrayOfElementsWithClassNameOfFoo.length;i++){
 document.getElementById("fileInput").addEventListener("change",()=>{
 	//Do something whenever a file is inputted to the input
 });
+
+/* Objects */
+var emptyObject={};
+var obj={
+	thingOne:1,
+	thingTwo:2
+};
+console.log(obj.thingOne);//Access the object
+obj.thingThree=3;//Add new values to it, also works the same for editing old ones
+obj["thingFour"]=4;
+delete obj.thingFour;//Remove a key from the object
+//Square bracket notation obj["foo"] allows for you to use variables that return a string to access a part of an object instead of which key or the name of the key being hardcoded
+console.log(thingThree in obj);//There is a key named thingThree in obj, so returns true
+for(var objOn in obj){//Iterate through every key in the object, with the value being held in objOn
+	console.log(objOn);
+}
+obj.thingFour=function(){
+	console.log(this.thingOne);//this returns the object the function is in. Outside of an object, returns the window or current function.
+}
+class foo{
+	constructor(){
+		this.thingOne=1;
+	}
+}
+var foo2=new foo();
+console.log(foo2.thingOne);//Is already set
+
+/* Array Methods */
+var arr=["Never","Gonna","Give","You","Up"];
+arrayOfElementsWithClassNameOfFoo.forEach(el=>{//Loops through the whole array and stores the values in el
+	console.log(el.innerHTML);
+});
+console.log(arr.indexOf("Gonna"));//1, returns the first index the provided value is at in the array
+console.log(arr.lastIndexOf("Give"));//2, returns the last index instead
+var findAMatchingElement=arr.find(val=>{
+	return val==="Up";
+});//Returns the index of Up or any other element you trigger returning true on
+arr.sort();//Sorts the array alphabetically
+/*
+arr.sort((a,b)=>{
+	return a-b;//If you had an array of numbers, you can do this to sort them in ascending or descending order depending on if you do a or b first. Returning a negative number means a goes first, positive means b goes first, and 0 means just leave it how it was
+});
+*/
+arr.reverse();//Returns the array backwards
+var splitArray=arr.split("Give");//Split the array around "Give". Everything before is in index 0, and everything after is in index 1.
+var newArr=arr.join(" ");//Returns the full array in string form, with a ` ` in between each value
+var fullArr=arr.reduce((valBefore,thisVal,index)=>{
+	return thisVal+" "+index;
+});//Loops through array and returns the value returned in the last index as valBefore, the current value in thisVal, and the index the loop is at in index
+console.log(newArr.isArray());//True, because newArr is, in fact, an array
+
+/* JSON */
+/*
+	Just an Object but all keys need double quotes and no commas after the last element
+*/
+var jsonData=JSON.stringify(obj);//Just returns a string of JSON text
+var newObj=JSON.parse(obj);//Turns it back into an object
+newObj.thingFive={};
+newObj.thingFive.thingOne=1;//Accessing values even nested
+//One way to validate if it is JSON
+function isJsonString(str) {
+    try {
+        JSON.parse(str);
+    }
+	catch (e) {
+        return false;
+    }
+	finally{
+    	return true;
+	}
+}
