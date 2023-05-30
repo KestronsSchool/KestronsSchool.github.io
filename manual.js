@@ -283,3 +283,31 @@ function isJsonString(str) {
     	return true;
 	}
 }
+
+/* JQuery */
+// <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+$(document).ready(()=>{
+	console.log("Ready");
+});
+$("p");//All P tags
+$("#foo");//The ID foo
+$(".foo");//All elements with the foo class
+$(".foo1, .foo2");//Multiple selectors
+$(document).click(()=>{
+	console.log("Click");
+});
+$(document).mouseenter(()=>{
+	console.log("Mouse has entered the document");
+});
+$(document).mouseleave(()=>{
+	console.log("Mouse has left the document");
+});
+$(document).show();
+$(document).hide();
+$(document).slideDown();
+$(document).slideUp();
+$(document).toggle();
+$(document).stop();
+$(document).show(()=>{
+	$(document).hide();//This is both chaining and a callback to my knowledge
+});
