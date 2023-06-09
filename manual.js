@@ -311,3 +311,31 @@ $(document).stop();
 $(document).show(()=>{
 	$(document).hide();//This is both chaining and a callback to my knowledge
 });
+
+/* Miscellaneous */
+/*
+Frontend is what the user sees, the graphical elements such as buttons and display
+Backend is what the program sees, the processing and such, usually referring to server-side coding as opposed to client-side
+
+Dynamic content is anything that changes based on use, and can be accomplished through servers or JS in the served webpage, and if you're really skilled CSS as well
+
+Ignoring the middle ground from all the DNS and security checks yadda yadda, it comes into the server with the request, the server processes the request making whatever changes and decides what to send, and then the server sends a response back
+
+A framework is a skeleton that you put your own cover on basically, a couple I know of are React or Angular. According to a quick seach, apparently jQuery is considered a framework as well
+
+Node.js is a server side Javascript language, which does not run on the client but rather the server, with such changes as to make it viable as one
+
+I may be wrong, but my guess for what the event loop means is a loop to keep the server running waiting on events
+
+.env files are for things such as web tokens or passwords or other secrets the program needs to run but should not be visible to the public
+
+The HTTP module is a very bare bones way of working with hyper text transfer protocols
+
+The fs module is a way of working with the filesystem
+
+The URL class is a way of working with URLs with relevant methods for manipulating text to URL strings and vice versa
+
+NPM is the Node.js package manager and is how you install, uninstall, update, etc your modules you need
+
+Events are things that trigger based on some other occurence, such as when a connection is made
+*/
